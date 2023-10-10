@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Private Dashboard</title>
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="../assets/scss/styles.css" />
+  <!-- Private Style -->
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      border: none !important;
+      outline: none !important;
+      border-collapse: separate;
+      border-spacing: 0 18px;
+      padding: 1rem;
+      padding-top: 0 !important;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border: none !important;
+      outline: none !important;
+    }
+    th td {
+      font-size: 20px;
+    }
+    tr {
+      background-color: #E1E1E1;
+      text-align: left;
+    }
+  
+    thead tr {
+      background-color: transparent !important;
+    }
+    thead tr th {
+      padding: 0 !important;
+      color: black;
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .pagination a {
+      padding: 8px 16px;
+      text-decoration: none;
+      color: #282632;
+    }
+
+    .pagination a:hove  r {
+      background-color: #282632;
+      color: white;
+    }
+    .pagination a.active {
+      background-color: #282632;
+      color: white;
+      border-radius: 5px;
+    }
+    tr td:first-child { border-top-left-radius: 50px; border-bottom-left-radius: 50px; }
+    tr td:last-child { border-top-right-radius: 50px; border-bottom-right-radius: 50px;}
+
+    tr td:first-child { border-bottom-left-radius: 50px; border-top-left-radius: 50px; }
+    tr td:last-child { border-bottom-right-radius: 50px; border-top-right-radius: 50px; }
+
+    .search-container {
+      display: flex;
+    }
+
+    .search-container {
+      width: 350px;
+      margin-top: .5rem;
+      margin-left: auto;
+    }
+
+    .search-container input:first-of-type {
+      background-color: white;
+      border: none;
+      outline: none;
+      border-radius: 15px;
+      margin-right: 1rem;
+      padding: 0.5rem 1rem;
+    }
+
+    .search-container select {
+      color: white;
+      background-color: #599BC4;
+      border: none;
+      padding: .5rem;
+      margin: 0;
+      width: 100%;
+      font-family: inherit;
+      font-size: inherit;
+      cursor: inherit;
+      line-height: inherit;
+      border-radius: 15px;
+    }
+
+    @media (max-width: 1063px) {
+      table {
+        width: 1100px !important;
+      }
+      .pagination {
+        margin-bottom: 2rem;
+      }
+    }
+</style>
+</head>
+<body>
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <aside class="left-sidebar">
+      <div>
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+          <a href="./index.html" class="text-nowrap logo-img" style="margin-top: 1rem;">
+            <img src="../assets/images/logos/signal-2023-08-28-164928dsc.png" width="70" alt="" />
+            <span style="font-weight: 600; font-size: 20px; color: #464646;">Private</span>
+          </a>
+          <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+            <i class="ti ti-x fs-8"></i>
+          </div>
+        </div>
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+          <ul id="sidebarnav">
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Home</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./index.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-layout-dashboard"></i>
+                </span>
+                <span class="hide-menu">Dashboard</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./account-list.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-user"></i>
+                </span>
+                <span class="hide-menu">Account list</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./app-versions.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-settings"></i>
+                </span>
+                <span class="hide-menu">Application Versions</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./create-version.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-apps"></i>
+                </span>
+                <span class="hide-menu">Create Version</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./admin-list.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-users"></i>
+                </span>
+                <span class="hide-menu">Admin List</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./create-admin.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-user-plus"></i>
+                </span>
+                <span class="hide-menu">Create Admin</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </aside>
+    <div class="body-wrapper">
+      <header class="app-header">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+            <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+              <li class="nav-item d-block d-xl-none">
+                <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="javascript:void(0)">
+                  <i class="ti ti-menu-2"></i>
+                </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <img src="../assets/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
+                </a>
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
+                  <div class="message-body">
+                    <a href="./authentication-login.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <div class="container-fluid">
+        <div class="container-fluid" style="overflow: auto;">
+          <main class="search-container">  
+            <input type="text" id="idSearchInput" placeholder="Account Name">
+            <select id="statusSearchInput">
+              <option value="">Filter by Status</option>
+              <option value="active">Active</option>
+              <option value="expired">Expired</option>
+            </select>
+          </main>
+          <table>
+              <thead>
+                  <tr>
+                      <th style="font-size: 15px;">Account Name</th>
+                      <th style="font-size: 15px;">Created On</th>
+                      <th style="font-size: 15px;">Expiry Date</th>
+                      <th style="font-size: 15px;">Subscription Type</th>
+                      <th style="font-size: 15px;">Status</th>
+                      <th style="text-align: center; font-size: 15px;">Actions</th>
+                      <th style="font-size: 15px;">ID</th>
+                  </tr>
+              </thead>
+              <tbody id="accountData">
+              </tbody>
+          </table>
+          <div class="pagination" style="height: auto;">
+            <button id="prevBtn" style="display: none;">Previous</button>
+            <button id="nextBtn" style="display: none;">Next</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/sidebarmenu.js"></script>
+  <script src="../assets/js/app.min.js"></script>
+  <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
+  <script>
+    const table = document.querySelector('table');
+    const accountData = document.getElementById('accountData');
+    const pagination = document.querySelector('.pagination');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const idSearchInput = document.getElementById('idSearchInput');
+    const statusSearchInput = document.getElementById('statusSearchInput');
+    let currentPage = 1;
+    const itemsPerPage = 10;
+    let accounts = [];
+    let filteredAccounts = [];
+    function populateTable(page) {
+      accountData.innerHTML = '';
+      const startIndex = (page - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      for (let i = startIndex; i < endIndex && i < filteredAccounts.length; i++) {
+        const account = filteredAccounts[i];
+        const row = document.createElement('tr');
+        const subscriptionTypeClass = account.subscriptionType === 'free' ? 'free' : 'paid';
+        const statusClass = account.status === 'active' ? 'active' : 'expired';
+        row.innerHTML = `
+          <td style="font-size: 18px; color: black; padding: 0 0 0 1rem;">${account.accountName}</td>
+          <td>${account.createdOn}</td>
+          <td>${account.expiryDate}</td>
+          <td class="${subscriptionTypeClass}" style="${account.subscriptionType === "Free" ? "color: #008EFF; font-weight: 800;" : "color: #FF9F2F;"}">${account.subscriptionType}</td>
+          <td class="${statusClass}"><button style="${account.status === "Active" ? "background-color: #79DD83; outline: none; border:none; border-radius: 20px; padding: .2rem 1rem; color: black;" : "background-color: #DA8F8F; outline: none; border:none; border-radius: 20px; padding: .2rem 1rem; color: black;"}">${account.status}</button></td>
+          <td style="text-align: center;">
+            <button style="background-color: #79C5DD; outline: none; border:none; border-radius: 20px; padding: .2rem 1rem;margin: 0 0.3rem;">Wipe</button>
+            <button style="background-color: #79C5DD; outline: none; border:none; border-radius: 20px; padding: .2rem 1rem;margin: 0 0.3rem;">Extend Subscription</button>
+            <button style="background-color: #79C5DD; outline: none; border:none; border-radius: 20px; padding: .2rem 1rem;margin: 0 0.3rem;">Change Subscription</button>
+          </td>
+          <td>${account.id}</td>
+        `;
+        accountData.appendChild(row);
+      }
+    }
+    function createPaginationButtons() {
+      const pageCount = Math.ceil(filteredAccounts.length / itemsPerPage);
+      prevBtn.disabled = currentPage === 1;
+      nextBtn.disabled = currentPage === pageCount;
+      const pageLinks = pagination.querySelectorAll('a');
+      for (const pageLink of pageLinks) {
+        pageLink.remove();
+      }
+      const maxVisibleButtons = 5;
+      const prevButton = document.createElement('a');
+      prevButton.href = '#';
+      prevButton.textContent = 'Previous';
+      prevButton.classList.add('prev-button');
+      prevButton.addEventListener('click', function () {
+        if (currentPage > 1) {
+          currentPage--;
+          populateTable(currentPage);
+          createPaginationButtons();
+        }
+      });
+      pagination.appendChild(prevButton);
+      if (pageCount <= maxVisibleButtons) {
+        for (let i = 1; i <= pageCount; i++) {
+          createPageButton(i);
+        }
+      } else {
+        for (let i = Math.max(currentPage - 1, 1); i <= Math.min(currentPage + 3, pageCount); i++) {
+          createPageButton(i);
+        }
+      }
+      const nextButton = document.createElement('a');
+      nextButton.href = '#';
+      nextButton.textContent = 'Next';
+      nextButton.classList.add('next-button');
+      nextButton.addEventListener('click', function () {
+        if (currentPage < pageCount) {
+          currentPage++;
+          populateTable(currentPage);
+          createPaginationButtons();
+        }
+      });
+      pagination.appendChild(nextButton);
+    }
+    function createPageButton(pageNumber) {
+      const button = document.createElement('a');
+      button.href = '#';
+      button.textContent = pageNumber;
+      if (pageNumber === currentPage) {
+        button.classList.add('active');
+      }
+      button.addEventListener('click', function () {
+        currentPage = pageNumber;
+        populateTable(currentPage);
+        createPaginationButtons();
+      });
+      pagination.appendChild(button);
+    }
+    fetch('accounts.json')
+      .then(response => response.json())
+      .then(data => {
+        accounts = data;
+        console.log(accounts);
+        filteredAccounts = [...accounts];
+        populateTable(currentPage);
+        createPaginationButtons();
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+      idSearchInput.addEventListener('input', searchTable);
+      statusSearchInput.addEventListener('change', searchTable);
+      function searchTable() {
+      const idSearchValue = idSearchInput.value.toLowerCase();
+      const statusSearchValue = statusSearchInput.value.toLowerCase();
+        filteredAccounts = accounts.filter(account => {
+          const idMatch = account.id.toLowerCase().includes(idSearchValue);
+          const statusMatch = statusSearchValue === '' || account.status.toLowerCase() === statusSearchValue;
+          return idMatch && statusMatch;
+        });
+        currentPage = 1;
+        populateTable(currentPage);
+        createPaginationButtons();
+      }
+</script>
+</body>
+</html>
